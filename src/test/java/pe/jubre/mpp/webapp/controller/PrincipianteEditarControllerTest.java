@@ -7,6 +7,9 @@ import java.util.Date;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -15,6 +18,8 @@ import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.bind.support.SimpleSessionStatus;
+import org.springframework.web.servlet.HandlerAdapter;
+
 import pe.jubre.mpp.model.Principiante;
 
 @RunWith(value = SpringJUnit4ClassRunner.class)
@@ -25,6 +30,9 @@ public class PrincipianteEditarControllerTest {
 
 	@Autowired
 	private PrincipianteEditarController controller;
+
+	@Autowired
+	private HandlerAdapter handlerAdapter;
 
 	@Test
 	public void validarGet() {
@@ -46,5 +54,12 @@ public class PrincipianteEditarControllerTest {
 		String view = controller.onSubmit(principiante, result, sessionStatus);
 
 		assertEquals("redirect:/app/principianteDetalle?principianteId=4", view);
+	}
+
+	@Test
+	public void lanzarErrorCuandoNoEnviaParametroPrincipianteId() {
+		MockHttpServletRequest request = new MockHttpServletRequest();
+		MockHttpServletResponse response = new MockHttpServletResponse();
+
 	}
 }
