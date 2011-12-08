@@ -33,9 +33,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  * {@link #afterPropertiesSet()}.
  */
 @SuppressWarnings("rawtypes")
-public class TestDataSourceFactory2 implements FactoryBean, InitializingBean {
+public class TestDataSourceFactory implements FactoryBean, InitializingBean {
 
-	private static Log logger = LogFactory.getLog(TestDataSourceFactory2.class);
+	private static Log logger = LogFactory.getLog(TestDataSourceFactory.class);
 
 	// configurable properties
 
@@ -59,7 +59,7 @@ public class TestDataSourceFactory2 implements FactoryBean, InitializingBean {
 	 * @see {@link #setSchemaLocation(Resource)}
 	 * @see {@link #setTestDataLocation(Resource)}
 	 */
-	public TestDataSourceFactory2() {
+	public TestDataSourceFactory() {
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class TestDataSourceFactory2 implements FactoryBean, InitializingBean {
 	 * @param schemaLocation the location of the file containing the schema DDL to export to the database
 	 * @param testDataLocation the location of the file containing the test data to load into the database
 	 */
-	public TestDataSourceFactory2(String testDatabaseName, Resource schemaLocation, Resource testDataLocation) {
+	public TestDataSourceFactory(String testDatabaseName, Resource schemaLocation, Resource testDataLocation) {
 		setTestDatabaseName(testDatabaseName);
 		setSchemaLocation(schemaLocation);
 		setTestDataLocation(testDataLocation);
@@ -156,7 +156,7 @@ public class TestDataSourceFactory2 implements FactoryBean, InitializingBean {
 	 */
 	public static DataSource createDataSource(String testDatabaseName, Resource schemaLocation,
 			Resource testDataLocation) {
-		return new TestDataSourceFactory2(testDatabaseName, schemaLocation, testDataLocation).getDataSource();
+		return new TestDataSourceFactory(testDatabaseName, schemaLocation, testDataLocation).getDataSource();
 	}
 
 	// internal helper methods

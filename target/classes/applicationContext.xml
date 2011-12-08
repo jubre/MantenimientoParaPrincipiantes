@@ -14,11 +14,11 @@
 
 	<context:component-scan base-package="pe.jubre.mpp" />
 	
-<!-- 	<bean id="dataSource" class="pe.jubre.mpp.testdb.TestDataSourceFactory2"> -->
-<!-- 		<property name="testDatabaseName" value="sgfc" /> -->
-<!-- 		<property name="schemaLocation" value="classpath:sgfc/testdb/schema.sql" /> -->
-<!-- 		<property name="testDataLocation" value="classpath:sgfc/testdb/test-data.sql" /> -->
-<!-- 	</bean> -->
+ 	<bean id="dataSource" class="pe.jubre.mpp.testdb.TestDataSourceFactory"> 
+ 		<property name="testDatabaseName" value="mpp" /> 
+ 		<property name="schemaLocation" value="classpath:sgfc/testdb/schema.sql" /> 
+ 		<property name="testDataLocation" value="classpath:sgfc/testdb/test-data.sql" /> 
+ 	</bean> 
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
