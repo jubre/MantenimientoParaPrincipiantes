@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "PRINCIPIANTE")
@@ -21,8 +21,7 @@ public class Principiante {
 	private Long principianteId;
 	@Column(name = "NOMBRE")
 	private String nombre;
-	// @Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "FECHA_CREACION")
 	private Date fechaCreacion;
 
