@@ -9,25 +9,26 @@
 </head>
 <body>
 
-<h1>Principiante Detalle</h1>
+	<h1>Principiante Detalle</h1>
 
-		<table>
-			<tr>
-				<td>Id:</td>
-				<td>${principiante.principianteId}</td>
-			</tr>
-			<tr>
-				<td>Nombre:</td>
-				<td>${principiante.nombre}</td>
-			</tr>
-			<tr>
-				<td>Fecha Creacion:</td>
-				<td>${principiante.fechaCreacion}</td>
-			</tr>
-		</table>
-	
+	<table>
+		<tr>
+			<td>Id:</td>
+			<td>${principiante.principianteId}</td>
+		</tr>
+		<tr>
+			<td>Nombre:</td>
+			<td>${principiante.nombre}</td>
+		</tr>
+		<tr>
+			<td>Fecha Creacion:</td>
+			<td>${principiante.fechaCreacion}</td>
+		</tr>
+	</table>
 
-<p><a href="principianteEditar?principianteId=${principiante.principianteId}">Editar Principiante</a></p>
+	<p>
+		<a href="principianteEditar?principianteId=${principiante.principianteId}">Editar Principiante</a>
+	</p>
 
 </body>
 </html>
