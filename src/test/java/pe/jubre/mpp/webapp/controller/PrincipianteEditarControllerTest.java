@@ -2,14 +2,18 @@ package pe.jubre.mpp.webapp.controller;
 
 import static org.junit.Assert.assertEquals;
 
+import java.net.URI;
 import java.util.Date;
+
+import javax.servlet.ServletContext;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.springframework.http.HttpMethod;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -57,9 +61,20 @@ public class PrincipianteEditarControllerTest {
 	}
 
 	@Test
-	public void lanzarErrorCuandoNoEnviaParametroPrincipianteId() {
+	public void lanzarErrorCuandoNoEnviaParametroPrincipianteId() throws Exception {
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		MockHttpServletResponse response = new MockHttpServletResponse();
+		URI uri = new URI("/principianteEditar");
+		HttpMethod method = HttpMethod.GET;
+		ServletContext servletContext = new MockServletContext();
+		
+		request.setMethod(method.name());
+		request.setRequestURI(uri.toString());
+		
+		assertEquals("/principianteEditar", request.getRequestURI());
 
+		// request.setRequestURI("/principianteEditar");
+		// final ModelAndView mav = handlerAdapter.handle(request, response, controller);
+		// assertViewName(mav, "");
 	}
 }
