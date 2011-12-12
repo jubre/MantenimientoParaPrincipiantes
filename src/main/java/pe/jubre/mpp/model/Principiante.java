@@ -24,13 +24,10 @@ public class Principiante {
 	private String apellidoPaterno;
 	@Column(name = "APELLIDO_MATERNO", nullable = false)
 	private String apellidoMaterno;
-	
 	@ManyToOne
 	@JoinColumn(name = "ESTADO_ID", nullable = false)
 	private Estado estado;
-	
-	
-	
+
 	@Embedded
 	private Auditor auditor;
 

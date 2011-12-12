@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pe.jubre.mpp.model.Estado;
 import pe.jubre.mpp.model.Principiante;
+import pe.jubre.mpp.util.EstadoEnum;
 
 @RunWith(value = SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:mpp/system-test-config.xml" })
@@ -24,6 +25,9 @@ public class PrincipianteDaoTest {
 
 	@Autowired
 	private PrincipianteDao principianteDao;
+
+	@Autowired
+	private EstadoDao estadoDao;
 
 	@Test
 	public void verificarBusquedaDeTodos() {
@@ -60,17 +64,33 @@ public class PrincipianteDaoTest {
 		principiante.setNombre("Henry");
 		principiante.setApellidoPaterno("Paterno");
 		principiante.setApellidoMaterno("Materno");
-		Estado estado = new Estado();
-		estado.setEstadoId(1);
-		principiante.setEstado(estado);
+		principiante.setEstado(estadoDao.findByPK(Estado.class, EstadoEnum.ACTIVO.valor));
 		principianteDao.insert(principiante);
 		List<Principiante> principiantes = principianteDao.findAll(Principiante.class);
 		assertEquals(4, principiantes.size());
 	}
 
 	@Test
+	public void verificarDescripcionDelEstadoLuegoDeUnaInsercion() {
+		Principiante principiante = new Principiante();
+		principiante.setNombre("Henry");
+		principiante.setApellidoPaterno("Paterno");
+		principiante.setApellidoMaterno("Materno");
+		principiante.setEstado(estadoDao.findByPK(Estado.class, EstadoEnum.ACTIVO.valor));
+		principianteDao.insert(principiante);
+		Principiante principianteParaValidar = principianteDao.findByPK(Principiante.class, principiante.getPrincipianteId());
+		assertEquals("Activo", principianteParaValidar.getEstado().getDescripcion());
+	}
+
+	@Test
 	public void verificarCampoDeAuditoriaFechaCreacionNoNulo() {
 		Principiante principiante = principianteDao.findByPK(Principiante.class, new Long(1));
 		assertNotNull(principiante.getAuditor().getFechaCreacion());
+	}
+
+	@Test
+	public void verificarFiltroPorCampoEstado() {
+		List<Principiante> principiantes = principianteDao.filtroPorEstado(EstadoEnum.ACTIVO.valor);
+		assertEquals(2, principiantes.size());
 	}
 }

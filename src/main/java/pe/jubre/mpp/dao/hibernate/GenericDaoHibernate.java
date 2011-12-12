@@ -16,7 +16,7 @@ public class GenericDaoHibernate<T, pk extends Serializable> implements GenericD
 
 	@Autowired
 	@PersistenceContext(unitName = "mpp-PU")
-	private EntityManager em;
+	protected EntityManager em;
 
 	@SuppressWarnings("unchecked")
 	public List<T> findAll(Class<T> typeClass) {
