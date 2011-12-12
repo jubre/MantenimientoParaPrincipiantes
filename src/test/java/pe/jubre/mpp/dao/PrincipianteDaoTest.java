@@ -2,6 +2,7 @@ package pe.jubre.mpp.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
 import java.util.List;
 
 import org.junit.Test;
@@ -14,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pe.jubre.mpp.model.Estado;
 import pe.jubre.mpp.model.Principiante;
-import pe.jubre.mpp.util.EstadoEnum;
 
 @RunWith(value = SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:mpp/system-test-config.xml" })

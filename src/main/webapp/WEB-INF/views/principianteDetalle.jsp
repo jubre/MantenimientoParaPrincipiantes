@@ -26,9 +26,8 @@
 		</tr>
 	</table>
 
-	<p>
-		<a href="principianteEditar?principianteId=${principiante.principianteId}">Editar Principiante</a>
-	</p>
+	<p><a href="principianteEditar?principianteId=${principiante.principianteId}">Editar Principiante</a></p>
+	<p><a href="principianteLista">Ver Principiantes</a></p>
 
 </body>
 </html>
