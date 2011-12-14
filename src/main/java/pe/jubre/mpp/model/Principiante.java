@@ -9,10 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "PRINCIPIANTE", uniqueConstraints = @UniqueConstraint(columnNames = { "ESTADO_ID" }))
+@Table(name = "PRINCIPIANTE")
 public class Principiante {
 
 	@Id
