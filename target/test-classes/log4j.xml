@@ -10,10 +10,18 @@
 			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
 		</layout>
 	</appender>
+	
+	<appender name="fatal-out" class="org.apache.log4j.FileAppender"> 
+        <param name="File" value="fatal_msgs.log"/> 
+        <param name="Threshold" value="fatal"/> 
+        <layout class="org.apache.log4j.PatternLayout"> 
+            <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p %c{1} : %m%n"/> 
+        </layout> 
+    </appender> 
 
 	<!-- Application logger -->
 	<logger name="mpp">
-		<level value="info" />
+		<level value="warn" />
 	</logger>
 
 	<!-- 3rdparty Loggers -->
@@ -42,13 +50,14 @@
 	</logger>
 
 	<logger name="org.hibernate.type">
-		<level value="trace" />
+		<level value="warn" />
 	</logger>
 		
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="info" />
 		<appender-ref ref="console" />
+		<appender-ref ref="fatal-out"/>
 	</root>
 	
 </log4j:configuration>
