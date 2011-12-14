@@ -32,7 +32,7 @@ public class PrincipianteDaoTest {
 	@Test
 	public void verificarBusquedaDeTodos() {
 		List<Principiante> principiante = principianteDao.findAll(Principiante.class);
-		assertEquals(3, principiante.size());
+		assertEquals(10, principiante.size());
 	}
 
 	@Test
@@ -55,7 +55,7 @@ public class PrincipianteDaoTest {
 		Principiante principiante = principianteDao.findByPK(Principiante.class, new Long(1));
 		principianteDao.remove(principiante);
 		List<Principiante> principiantes = principianteDao.findAll(Principiante.class);
-		assertEquals(2, principiantes.size());
+		assertEquals(9, principiantes.size());
 	}
 
 	@Test
@@ -67,7 +67,7 @@ public class PrincipianteDaoTest {
 		principiante.setEstado(estadoDao.findByPK(Estado.class, EstadoEnum.ACTIVO.valor));
 		principianteDao.insert(principiante);
 		List<Principiante> principiantes = principianteDao.findAll(Principiante.class);
-		assertEquals(4, principiantes.size());
+		assertEquals(11, principiantes.size());
 	}
 
 	@Test
@@ -81,6 +81,23 @@ public class PrincipianteDaoTest {
 		Principiante principianteParaValidar = principianteDao.findByPK(Principiante.class, principiante.getPrincipianteId());
 		assertEquals("Activo", principianteParaValidar.getEstado().getDescripcion());
 	}
+	
+	@Test
+	public void lanzarErrorCuandoAsignaEstadoQueNoExisteTablaGeneralEstados() {
+		Estado estado = new Estado();
+		estado.setEstadoId(100);
+		
+		Principiante principiante = new Principiante();
+		principiante.setNombre("Henry");
+		principiante.setApellidoPaterno("Paterno");
+		principiante.setApellidoMaterno("Materno");
+		principiante.setEstado(estado);
+		
+		principianteDao.insert(principiante);
+		
+		List<Principiante> principiantes = principianteDao.findAll(Principiante.class);
+		assertEquals(11, principiantes.size());
+	}
 
 	@Test
 	public void verificarCampoDeAuditoriaFechaCreacionNoNulo() {
@@ -91,6 +108,6 @@ public class PrincipianteDaoTest {
 	@Test
 	public void verificarFiltroPorCampoEstado() {
 		List<Principiante> principiantes = principianteDao.filtroPorEstado(EstadoEnum.ACTIVO.valor);
-		assertEquals(2, principiantes.size());
+		assertEquals(8, principiantes.size());
 	}
 }
