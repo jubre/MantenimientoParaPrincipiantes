@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PRINCIPIANTE")
 public class Principiante {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "PRINCIPIANTE_ID", nullable = false, unique = true)
