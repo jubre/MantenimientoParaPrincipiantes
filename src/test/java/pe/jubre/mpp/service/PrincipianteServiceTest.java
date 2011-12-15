@@ -25,7 +25,7 @@ public class PrincipianteServiceTest {
 	@Test
 	public void obtenerListaPrincipiantes() {
 		List<Principiante> principiantes = principianteService.obtenerListaPrincipiantes();
-		assertEquals(3, principiantes.size());
+		assertEquals(10, principiantes.size());
 	}
 
 	@Test

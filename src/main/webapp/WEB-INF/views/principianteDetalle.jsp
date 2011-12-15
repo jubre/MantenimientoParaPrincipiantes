@@ -21,8 +21,12 @@
 			<td>${principiante.nombre}</td>
 		</tr>
 		<tr>
+			<td>Estado:</td>
+			<td>${principiante.estado.descripcion}</td>
+		</tr>
+		<tr>
 			<td>Fecha Creacion:</td>
-			<td>${principiante.fechaCreacion}</td>
+			<td>${principiante.auditor.fechaCreacion}</td>
 		</tr>
 	</table>
 

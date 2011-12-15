@@ -44,10 +44,10 @@ public class PrincipianteDaoTest {
 	@Test
 	public void verificarActualizacion() {
 		Principiante principiante = principianteDao.findByPK(Principiante.class, new Long(1));
-		principiante.setNombre("Lexintong");
+		principiante.setNombre("Mark");
 		principianteDao.update(principiante);
 		principiante = principianteDao.findByPK(Principiante.class, new Long(1));
-		assertEquals("Lexintong", principiante.getNombre());
+		assertEquals("Mark", principiante.getNombre());
 	}
 
 	@Test
@@ -81,26 +81,9 @@ public class PrincipianteDaoTest {
 		Principiante principianteParaValidar = principianteDao.findByPK(Principiante.class, principiante.getPrincipianteId());
 		assertEquals("Activo", principianteParaValidar.getEstado().getDescripcion());
 	}
-	
-	@Test
-	public void lanzarErrorCuandoAsignaEstadoQueNoExisteTablaGeneralEstados() {
-		Estado estado = new Estado();
-		estado.setEstadoId(100);
-		
-		Principiante principiante = new Principiante();
-		principiante.setNombre("Henry");
-		principiante.setApellidoPaterno("Paterno");
-		principiante.setApellidoMaterno("Materno");
-		principiante.setEstado(estado);
-		
-		principianteDao.insert(principiante);
-		
-		List<Principiante> principiantes = principianteDao.findAll(Principiante.class);
-		assertEquals(11, principiantes.size());
-	}
 
 	@Test
-	public void verificarCampoDeAuditoriaFechaCreacionNoNulo() {
+	public void verificarCampoDeAuditoriaFechaCreacionNoNull() {
 		Principiante principiante = principianteDao.findByPK(Principiante.class, new Long(1));
 		assertNotNull(principiante.getAuditor().getFechaCreacion());
 	}

@@ -20,10 +20,23 @@
 			<td><form:errors path="nombre"/></td>
 		</tr>
 		<tr>
+			<td>Estado:</td>
+			<td><form:input path="estado.descripcion"/></td>
+			<td><form:errors path="estado.descripcion"/></td>
+		</tr>
+		<tr>
+			<td>Estado:</td>
+			<td>
+				<form:select path="estado.estadoId">
+					<form:options items="${estados}" itemLabel="descripcion" itemValue="estadoId"/>
+				</form:select>
+			</td>
+			<td></td>
+		</tr>
 		<tr>
 			<td>Fecha Creacion:</td>
-			<td><form:input path="fechaCreacion"/></td>
-			<td><form:errors path="fechaCreacion"/></td>
+			<td><form:input path="auditor.fechaCreacion"/></td>
+			<td><form:errors path="auditor.fechaCreacion"/></td>
 		</tr>
 		<tr>
 			<td colspan="3"><input type="submit" value="Actualizar Principiante"/></td>

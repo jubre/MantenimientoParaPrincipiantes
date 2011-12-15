@@ -1,6 +1,7 @@
 package pe.jubre.mpp.webapp.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import pe.jubre.mpp.model.Estado;
 import pe.jubre.mpp.model.Principiante;
+import pe.jubre.mpp.service.EstadoService;
 import pe.jubre.mpp.service.PrincipianteService;
 
 @Controller
@@ -25,6 +28,9 @@ import pe.jubre.mpp.service.PrincipianteService;
 public class PrincipianteEditarController {
 	@Autowired
 	private PrincipianteService principianteService;
+	
+	@Autowired
+	private EstadoService estadoService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -32,6 +38,11 @@ public class PrincipianteEditarController {
 		dateFormat.setLenient(false);
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 		binder.setRequiredFields(new String[] { "nombre" });
+	}
+	
+	@ModelAttribute("estados")
+	public Collection<Estado> cargarEstados(){
+		return estadoService.obtenerListaEstadosParaFormularios();
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
