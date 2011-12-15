@@ -20,10 +20,14 @@
 			<td><form:errors path="nombre"/></td>
 		</tr>
 		<tr>
-			<td>Estado:</td>
-			<td><form:input path="estado.descripcion"/></td>
-			<td><form:errors path="estado.descripcion"/></td>
-		</tr>
+			<td>Estado Registro:</td>
+			<td>
+				<form:select path="estadoRegistro.estadoRegistroId">
+					<form:options items="${estadoRegistros}" itemLabel="descripcion" itemValue="estadoRegistroId"/>
+				</form:select>
+			</td>
+			<td><form:errors path="estadoRegistro.estadoRegistroId"/></td>
+		</tr>		
 		<tr>
 			<td>Estado:</td>
 			<td>
@@ -31,7 +35,7 @@
 					<form:options items="${estados}" itemLabel="descripcion" itemValue="estadoId"/>
 				</form:select>
 			</td>
-			<td></td>
+			<td><form:errors path="estado.estadoId"/></td>
 		</tr>
 		<tr>
 			<td>Fecha Creacion:</td>

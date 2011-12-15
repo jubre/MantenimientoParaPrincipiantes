@@ -25,6 +25,10 @@
 			<td>${principiante.estado.descripcion}</td>
 		</tr>
 		<tr>
+			<td>Estado Registro:</td>
+			<td>${principiante.estadoRegistro.descripcion}</td>
+		</tr>
+		<tr>
 			<td>Fecha Creacion:</td>
 			<td>${principiante.auditor.fechaCreacion}</td>
 		</tr>

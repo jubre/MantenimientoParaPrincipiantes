@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import pe.jubre.mpp.model.Estado;
+import pe.jubre.mpp.model.EstadoRegistro;
 import pe.jubre.mpp.model.Principiante;
+import pe.jubre.mpp.service.EstadoRegistroService;
 import pe.jubre.mpp.service.EstadoService;
 import pe.jubre.mpp.service.PrincipianteService;
 
@@ -31,6 +33,9 @@ public class PrincipianteEditarController {
 	
 	@Autowired
 	private EstadoService estadoService;
+	
+	@Autowired
+	private EstadoRegistroService estadoRegistroService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -41,9 +46,15 @@ public class PrincipianteEditarController {
 	}
 	
 	@ModelAttribute("estados")
-	public Collection<Estado> cargarEstados(){
+	public Collection<Estado> cargarEstadosParaFormularios(){
 		return estadoService.obtenerListaEstadosParaFormularios();
 	}
+	
+	@ModelAttribute("estadoRegistros")
+	public Collection<EstadoRegistro> cargarEstadoRegistros(){
+		return estadoRegistroService.obtenerListaEstadoRegistros();
+	}
+	
 
 	@RequestMapping(method = RequestMethod.GET)
 	public @ModelAttribute("principiante")

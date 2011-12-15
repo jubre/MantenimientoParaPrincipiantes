@@ -27,6 +27,9 @@ public class Principiante {
 	@ManyToOne
 	@JoinColumn(name = "ESTADO_ID", nullable = false)
 	private Estado estado;
+	@ManyToOne
+	@JoinColumn(name = "ESTADO_REGISTRO_ID", nullable = false)
+	private EstadoRegistro estadoRegistro;
 
 	@Embedded
 	private Auditor auditor;
@@ -72,6 +75,14 @@ public class Principiante {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}	
+
+	public EstadoRegistro getEstadoRegistro() {
+		return estadoRegistro;
+	}
+
+	public void setEstadoRegistro(EstadoRegistro estadoRegistro) {
+		this.estadoRegistro = estadoRegistro;
 	}
 
 	public Auditor getAuditor() {

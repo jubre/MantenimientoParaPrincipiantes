@@ -17,5 +17,7 @@ create table PRINCIPIANTE (PRINCIPIANTE_ID integer identity primary key,
 	APELLIDO_PATERNO varchar(50) not null,
 	APELLIDO_MATERNO varchar(50) not null,
 	ESTADO_ID integer not null,
+	ESTADO_REGISTRO_ID integer not null,
+	SEXO_ID integer not null,
 	FECHA_CREACION date);
 	
