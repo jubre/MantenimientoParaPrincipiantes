@@ -8,12 +8,11 @@ public enum EstadoEnum {
 		this.valor = valor;
 	}
 
-	public static EstadoEnum convertir(int valorEstadoEnum) {
+	public static EstadoEnum convertir(int valor) {
 		for (EstadoEnum estadoEnum : EstadoEnum.values()) {
-			if (estadoEnum.valor == valorEstadoEnum)
+			if (estadoEnum.valor == valor)
 				return estadoEnum;
 		}
 		return null;
 	}
-
 }

@@ -26,7 +26,7 @@ public class PrincipianteControllerTest {
 	@Test
 	public void validarUsuarioListaRequest(){
 		List<Principiante> principiantes =controller.principianteLista();
-		assertEquals(3, principiantes.size());
+		assertEquals(10, principiantes.size());
 	}
 	
 	@Test

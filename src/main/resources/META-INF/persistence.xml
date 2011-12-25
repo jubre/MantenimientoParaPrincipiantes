@@ -9,6 +9,7 @@
 		<class>pe.jubre.mpp.model.Principiante</class>
 		<class>pe.jubre.mpp.model.Estado</class>
 		<class>pe.jubre.mpp.model.EstadoRegistro</class>
+		<class>pe.jubre.mpp.model.Sexo</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	</persistence-unit>
 </persistence>

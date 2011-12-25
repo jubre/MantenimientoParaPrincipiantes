@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PRINCIPIANTE")
 public class Principiante {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "PRINCIPIANTE_ID", nullable = false, unique = true)
@@ -30,6 +30,9 @@ public class Principiante {
 	@ManyToOne
 	@JoinColumn(name = "ESTADO_REGISTRO_ID", nullable = false)
 	private EstadoRegistro estadoRegistro;
+	@ManyToOne
+	@JoinColumn(name = "SEXO_ID", nullable = false)
+	private Sexo sexo;
 
 	@Embedded
 	private Auditor auditor;
@@ -75,7 +78,7 @@ public class Principiante {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
-	}	
+	}
 
 	public EstadoRegistro getEstadoRegistro() {
 		return estadoRegistro;
@@ -83,6 +86,14 @@ public class Principiante {
 
 	public void setEstadoRegistro(EstadoRegistro estadoRegistro) {
 		this.estadoRegistro = estadoRegistro;
+	}
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
 	}
 
 	public Auditor getAuditor() {

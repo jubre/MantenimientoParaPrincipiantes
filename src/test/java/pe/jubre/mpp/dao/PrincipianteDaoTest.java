@@ -14,8 +14,12 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.jubre.mpp.model.Estado;
+import pe.jubre.mpp.model.EstadoRegistro;
 import pe.jubre.mpp.model.Principiante;
+import pe.jubre.mpp.model.Sexo;
 import pe.jubre.mpp.util.EstadoEnum;
+import pe.jubre.mpp.util.EstadoRegistroEnum;
+import pe.jubre.mpp.util.SexoEnum;
 
 @RunWith(value = SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:mpp/system-test-config.xml" })
@@ -25,9 +29,12 @@ public class PrincipianteDaoTest {
 
 	@Autowired
 	private PrincipianteDao principianteDao;
-
 	@Autowired
 	private EstadoDao estadoDao;
+	@Autowired
+	private EstadoRegistroDao estadoRegistroDao;
+	@Autowired
+	private SexoDao sexoDao;
 
 	@Test
 	public void verificarBusquedaDeTodos() {
@@ -65,6 +72,8 @@ public class PrincipianteDaoTest {
 		principiante.setApellidoPaterno("Paterno");
 		principiante.setApellidoMaterno("Materno");
 		principiante.setEstado(estadoDao.findByPK(Estado.class, EstadoEnum.ACTIVO.valor));
+		principiante.setEstadoRegistro(estadoRegistroDao.findByPK(EstadoRegistro.class, EstadoRegistroEnum.ACEPTADO.valor));
+		principiante.setSexo(sexoDao.findByPK(Sexo.class, SexoEnum.MASCULINO.valor));
 		principianteDao.insert(principiante);
 		List<Principiante> principiantes = principianteDao.findAll(Principiante.class);
 		assertEquals(11, principiantes.size());
@@ -77,6 +86,8 @@ public class PrincipianteDaoTest {
 		principiante.setApellidoPaterno("Paterno");
 		principiante.setApellidoMaterno("Materno");
 		principiante.setEstado(estadoDao.findByPK(Estado.class, EstadoEnum.ACTIVO.valor));
+		principiante.setEstadoRegistro(estadoRegistroDao.findByPK(EstadoRegistro.class, EstadoRegistroEnum.ACEPTADO.valor));
+		principiante.setSexo(sexoDao.findByPK(Sexo.class, SexoEnum.MASCULINO.valor));
 		principianteDao.insert(principiante);
 		Principiante principianteParaValidar = principianteDao.findByPK(Principiante.class, principiante.getPrincipianteId());
 		assertEquals("Activo", principianteParaValidar.getEstado().getDescripcion());
